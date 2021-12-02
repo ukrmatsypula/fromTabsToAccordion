@@ -30,19 +30,21 @@ $(function () {
     }
   }
 
-  function mobileAccordionHandler() {
-    $(this)
-      .toggleClass("faq-tab__item--active")
-      .children(".faq-tab-collapse")
-      .find(".faq-tab-content")
-      .slideToggle();
+  function mobileAccordionHandler(e) {
+    if (!$(e.target).closest(".faq-tab-content").length) {
+      $(this)
+        .toggleClass("faq-tab__item--active")
+        .children(".faq-tab-collapse")
+        .find(".faq-tab-content")
+        .slideToggle();
 
-    $(".faq-tab__item")
-      .not(this)
-      .removeClass("faq-tab__item--active")
-      .children(".faq-tab-collapse")
-      .find(".faq-tab-content")
-      .slideUp();
+      $(".faq-tab__item")
+        .not(this)
+        .removeClass("faq-tab__item--active")
+        .children(".faq-tab-collapse")
+        .find(".faq-tab-content")
+        .slideUp();
+    }
   }
 
   $(window).on("resize", checkScreenWidth);

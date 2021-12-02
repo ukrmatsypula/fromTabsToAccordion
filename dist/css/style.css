@@ -50,22 +50,22 @@ img {
 }
 
 .container {
+  width: 100%;
   max-width: 1440px;
   margin: 0 auto;
 }
 
 .main-content {
+  width: 100%;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  height: 800px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 1000px;
 }
 
 .left-square-container {
@@ -78,9 +78,7 @@ img {
 }
 
 .left-square-container .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   position: absolute;
 }
 
@@ -122,6 +120,7 @@ img {
   z-index: 3;
   position: relative;
   letter-spacing: 1px;
+  text-transform: capitalize;
 }
 
 .left-square-container .content .faq-tab-content-btn {
@@ -161,9 +160,9 @@ img {
           align-items: baseline;
   width: 350px;
   border-bottom: 1px solid rgba(19, 64, 72, 0.6);
-  -webkit-transition: width 0.2s linear, color 0.2s linear;
-  -o-transition: width 0.2s linear, color 0.2s linear;
-  transition: width 0.2s linear, color 0.2s linear;
+  -webkit-transition: width 0.2s linear, color 0.2s linear, text-transform 0.2s linear;
+  -o-transition: width 0.2s linear, color 0.2s linear, text-transform 0.2s linear;
+  transition: width 0.2s linear, color 0.2s linear, text-transform 0.2s linear;
   cursor: pointer;
   -webkit-transition: opacity 0.2s linear;
   -o-transition: opacity 0.2s linear;
@@ -190,9 +189,10 @@ img {
 .faq-tab__item--active .faq-tab__item-city {
   font-size: 32px;
   width: 100%;
-  -webkit-transition: width 0.2s linear;
-  -o-transition: width 0.2s linear;
-  transition: width 0.2s linear;
+  -webkit-transition: width 0.2s linear, text-transform 0.2s linear;
+  -o-transition: width 0.2s linear, text-transform 0.2s linear;
+  transition: width 0.2s linear, text-transform 0.2s linear;
+  text-transform: capitalize;
 }
 
 .faq-tab__item--active .faq-tab__item-city::after {
@@ -213,6 +213,10 @@ img {
 
 .faq-tab__item--active .faq-tab__item-country {
   font-size: 14px;
+  margin-left: 35px;
+  -webkit-transition: margin-left 0.2s linear;
+  -o-transition: margin-left 0.2s linear;
+  transition: margin-left 0.2s linear;
 }
 
 .faq-tab__item-city {
@@ -228,14 +232,14 @@ img {
   font-weight: 700;
   font-family: "Raleway", sans-serif;
   letter-spacing: 2px;
-  -webkit-transition: font-size 0.2s linear;
-  -o-transition: font-size 0.2s linear;
-  transition: font-size 0.2s linear;
+  -webkit-transition: font-size 0.2s linear, text-transform 0.2s linear, margin-left 0.2s linear;
+  -o-transition: font-size 0.2s linear, text-transform 0.2s linear, margin-left 0.2s linear;
+  transition: font-size 0.2s linear, text-transform 0.2s linear, margin-left 0.2s linear;
+  text-transform: uppercase;
 }
 
 @media (max-width: 767px) {
   .main-content {
-    width: initial;
     height: initial;
   }
 
@@ -268,7 +272,7 @@ img {
   }
 
   .faq-tab {
-    width: calc(100% - 20px);
+    min-width: unset;
   }
 
   .faq-tab__item {
@@ -284,10 +288,7 @@ img {
     max-width: 100%;
     padding-top: 0;
     padding-bottom: 20px;
-  }
-
-  .faq-tab__item--active {
-    width: 350px;
+    width: calc(100% - 20px);
   }
 
   .faq-tab__item--active .faq-tab__item-city {
@@ -310,6 +311,10 @@ img {
 
   .faq-tab__item--active .faq-tab__item-country {
     font-size: 12px;
+  }
+
+  .faq-tab__item--active .faq-tab__item {
+    width: calc(100% - 20px);
   }
 
   .faq-tab__item:not(.faq-tab__item--active):hover {
