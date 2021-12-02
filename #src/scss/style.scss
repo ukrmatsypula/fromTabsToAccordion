@@ -1,0 +1,291 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Arial", sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  color: rgba(255, 255, 255);
+  font-family: Arial, "sans-serif";
+  font-size: 16px;
+  font-weight: 400;
+  padding: 14px;
+  letter-spacing: 1px;
+  transition: background-color 0.2s linear, border-color 0.2s linear;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 60%);
+    border-color: rgb(255, 218, 6);
+  }
+
+  &--transparent {
+    border: 2px solid rgba(214, 181, 0);
+    background-color: none;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.main-content {
+  display: inline-flex;
+  height: 800px;
+  align-items: center;
+  justify-content: center;
+  width: 1000px;
+}
+
+.left-square-container {
+  padding: 105px 0 105px 150px;
+  background-color: rgba(35, 30, 31, 5%);
+  width: 740px;
+  height: 630px;
+  position: relative;
+  z-index: 0;
+
+  .content {
+    display: flex;
+    position: absolute;
+
+    // right side
+    .faq-tab-collapse {
+      position: absolute;
+      top: 0;
+      left: 490px;
+      z-index: -1;
+    }
+
+    .faq-tab-content {
+      display: none;
+      width: 630px;
+      height: 420px;
+      padding: 90px 140px 180px 116px;
+      position: relative;
+      right: 50px;
+
+      &-media {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+
+        img {
+          min-height: 420px;
+        }
+      }
+
+      &-text {
+        color: rgb(247, 242, 223);
+        font-size: 15px;
+        font-family: "Raleway", sans-serif;
+        width: 370px;
+        line-height: 1.6;
+        font-weight: 500;
+        margin-bottom: 70px;
+        z-index: 3;
+        position: relative;
+        letter-spacing: 1px;
+      }
+
+      &-btn {
+        position: relative;
+        z-index: 3;
+      }
+
+      &::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        display: block;
+        background-color: rgba(0, 0, 0, 41%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
+
+    .faq-tab-content--active {
+      display: block;
+    }
+  }
+}
+
+.faq-tab {
+  color: rgba(19, 74, 72, 75%);
+  min-width: 490px;
+
+  &__item {
+    padding: 37px 0 25px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: baseline;
+    width: 350px;
+    border-bottom: 1px solid rgba(19, 64, 72, 60%);
+    transition: width 0.2s linear, color 0.2s linear;
+    cursor: pointer;
+    transition: opacity 0.2s linear;
+
+    &:not(.faq-tab__item--active):hover {
+      opacity: 0.5;
+      transition: opacity 0.2s linear;
+    }
+
+    &--active {
+      color: rgba(214, 181, 0);
+      border-bottom: 3px solid rgba(214, 181, 0);
+      width: 490px;
+      transition: width 0.2s linear, color 0.2s linear;
+      // position: relative;
+      z-index: 5;
+
+      .faq-tab__item-city {
+        font-size: 32px;
+        width: 100%;
+        transition: width 0.2s linear;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 20px;
+          height: 20px;
+          border: 3px solid rgba(214, 181, 0);
+          transform: rotate(45deg) translate(0px, 2px);
+          border-left-color: transparent;
+          border-bottom-color: transparent;
+          position: absolute;
+          right: -10px;
+          bottom: -35px;
+        }
+      }
+      .faq-tab__item-country {
+        font-size: 14px;
+      }
+    }
+
+    &-city {
+      letter-spacing: 1px;
+      transition: font-size 0.2s linear, width 0.2s linear;
+      position: relative;
+    }
+
+    &-country {
+      font-size: 12px;
+      font-weight: 700;
+      font-family: "Raleway", sans-serif;
+      letter-spacing: 2px;
+      transition: font-size 0.2s linear;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    width: initial;
+    height: initial;
+  }
+
+  .left-square-container {
+    padding: 0;
+    height: auto;
+    width: 100%;
+
+    .content {
+      width: 100%;
+
+      .faq-tab-collapse {
+        position: static;
+      }
+      .faq-tab-collapse {
+        width: 100%;
+      }
+      .faq-tab-content {
+        right: 0;
+        max-width: 100%;
+        padding: 40px 20px;
+
+        &-text {
+          width: initial;
+        }
+      }
+    }
+  }
+
+  .faq-tab {
+    width: calc(100% - 20px);
+
+    &__item {
+      position: relative;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      max-width: 100%;
+      padding-top: 0;
+      padding-bottom: 20px;
+
+      &--active {
+        width: 350px;
+
+        .faq-tab__item-city {
+          font-size: 22px;
+          margin-bottom: 50px;
+
+          &::after {
+            content: "";
+            top: 50%;
+            transform: translateY(-50%) rotate(-225deg);
+            transition: transform 0.2s linear;
+          }
+        }
+
+        .faq-tab__item-country {
+          font-size: 12px;
+        }
+      }
+
+      &:not(.faq-tab__item--active) {
+        &:hover {
+          opacity: 1;
+        }
+        &::after {
+          content: "";
+          display: block;
+          width: 20px;
+          height: 20px;
+          border: 3px solid rgba(214, 181, 0);
+          border-left-color: transparent;
+          border-bottom-color: transparent;
+          position: absolute;
+          right: 0;
+          top: 10px;
+          transform: rotate(45deg) translateY(-10px);
+          transition: transform 0.2s linear;
+        }
+      }
+    }
+  }
+}
